@@ -10,59 +10,59 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def verify():
-    # when the endpoint is registered as a webhook, it must echo back
-    # the 'hub.challenge' value it receives in the query arguments
-    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-        if not request.args.get("hub.verify_token") == os.environ["VERIFY_TOKEN"]:
-            return "Verification token mismatch", 403
-        return request.args["hub.challenge"], 200
+	# when the endpoint is registered as a webhook, it must echo back
+	# the 'hub.challenge' value it receives in the query arguments
+	if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
+		if not request.args.get("hub.verify_token") == os.environ["VERIFY_TOKEN"]:
+			return "Verification token mismatch", 403
+		return request.args["hub.challenge"], 200
 
-    return "Hello world", 200
+	return "Hello world", 200
 
 
 @app.route('/', methods=['POST'])
 def webhook():
 
-    # endpoint for processing incoming messaging events
+	# endpoint for processing incoming messaging events
 
-    data = request.get_json()
-    log(data)  # you may not want to log every incoming message in production, but it's good for testing
+	data = request.get_json()
+	log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
-    if data["object"] == "page":
+	if data["object"] == "page":
 
-        for entry in data["entry"]:
-            for messaging_event in entry["messaging"]:
+		for entry in data["entry"]:
+			for messaging_event in entry["messaging"]:
 
-                if messaging_event.get("message"):  # someone sent us a message
-                    sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                    recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    message_text = messaging_event["message"]["text"]  # the message's text
+				if messaging_event.get("message"):  # someone sent us a message
+					sender_id = messaging_event["sender"]["id"]		# the facebook ID of the person sending you the message
+					recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+					message_text = messaging_event["message"]["text"]  # the message's text
 
-                    onMessageEvent(sender_id, recipient_id, message_text)
+					onMessageEvent(sender_id, recipient_id, message_text)
 
-                if messaging_event.get("delivery"):  # delivery confirmation
-                    pass
+				if messaging_event.get("delivery"):  # delivery confirmation
+					pass
 
-                if messaging_event.get("optin"):  # optin confirmation
-                    pass
+				if messaging_event.get("optin"):  # optin confirmation
+					pass
 
-                if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    pass
+				if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
+					pass
 
-    return "ok", 200
+	return "ok", 200
 
 def postData(data):
 	params = {
-        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
+		"access_token": os.environ["PAGE_ACCESS_TOKEN"]
+	}
+	headers = {
+		"Content-Type": "application/json"
+	}
 
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
+	r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+	if r.status_code != 200:
+		log(r.status_code)
+		log(r.text)
 
 def onMessageEvent(sender_id, recipient_id, message_text):
 	doSenderActions(sender_id)
@@ -72,22 +72,22 @@ def onMessageEvent(sender_id, recipient_id, message_text):
 def greeting(sender_id):
 	text = "Welcome to Nova shop, what are you looking for today?"
 	buttons = [
-		          {
-		            "type":"postback",
-		            "title":"T-Shirt",
-		            "payload":"T_SHIRT"
-		          },
-		          {
-		            "type":"postback",
-		            "title":"Jean",
-		            "payload":"JEAN"
-		          },
-		          {
-		            "type":"postback",
-		            "title":"Wallet",
-		            "payload":"WALLET"
-		          }
-		        ]
+				  {
+					"type":"postback",
+					"title":"T-Shirt",
+					"payload":"T_SHIRT"
+				  },
+				  {
+					"type":"postback",
+					"title":"Jean",
+					"payload":"JEAN"
+				  },
+				  {
+					"type":"postback",
+					"title":"Wallet",
+					"payload":"WALLET"
+				  }
+				]
 	doButtonTemplate(sender_id, text, buttons)
 
 
@@ -95,17 +95,17 @@ def greeting(sender_id):
 def doButtonTemplate(recipient_id, text, buttons):
 	data = json.dumps({
 		  "recipient":{
-		    "id":recipient_id
+			"id":recipient_id
 		  },
 		  "message":{
-		    "attachment":{
-		      "type":"template",
-		      "payload":{
-		        "template_type":"button",
-		        "text":text,
-		        "buttons": buttons
-		      }
-		    }
+			"attachment":{
+			  "type":"template",
+			  "payload":{
+				"template_type":"button",
+				"text":text,
+				"buttons": buttons
+			  }
+			}
 		  }
 		})
 
@@ -123,22 +123,22 @@ def doSenderActions(recipient_id):
 
 # Text Message
 def doTextMessage(recipient_id, message_text):
-    #log("doTextMessage to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        },
-        "message": {
-            "text": message_text
-        }
-    })
-    postData(data)
+	#log("doTextMessage to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+	data = json.dumps({
+		"recipient": {
+			"id": recipient_id
+		},
+		"message": {
+			"text": message_text
+		}
+	})
+	postData(data)
 
  # simple wrapper for logging to stdout on heroku
 def log(message): 
-    print str(message)
-    sys.stdout.flush()
+	print str(message)
+	sys.stdout.flush()
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+	app.run(debug=True)
