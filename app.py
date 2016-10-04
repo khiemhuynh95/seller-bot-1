@@ -20,7 +20,6 @@ def verify():
     return "Hello world", 200
 
 
-
 @app.route('/', methods=['POST'])
 def webhook():
 
@@ -52,21 +51,79 @@ def webhook():
 
     return "ok", 200
 
-def onMessageEvent(sender_id, recipient_id, message_text):
-	#if message_text == 
-	send_message(sender_id, "got it, thanks!")
-
-
-def send_message(recipient_id, message_text):
-
-    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
-
-    params = {
+def postData(data):
+	params = {
         "access_token": os.environ["PAGE_ACCESS_TOKEN"]
     }
     headers = {
         "Content-Type": "application/json"
     }
+
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
+
+def onMessageEvent(sender_id, recipient_id, message_text):
+	doSenderActions(sender_id)
+	if message_text == "hello":
+		greeting(sender_id)
+
+def greeting(sender_id):
+	text = "Welcome to Nova shop, what are you looking for today?"
+	buttons = [
+		          {
+		            "type":"postback",
+		            "title":"T-Shirt",
+		            "payload":"T_SHIRT"
+		          },
+		          {
+		            "type":"postback",
+		            "title":"Jean",
+		            "payload":"JEAN"
+		          },
+		          {
+		            "type":"postback",
+		            "title":"Wallet",
+		            "payload":"WALLET"
+		          }
+		        ]
+	doButtonTemplate(sender_id, text, buttons)
+
+
+# Button Template
+def doButtonTemplate(recipient_id, text, buttons):
+	data = json.dumps({
+		  "recipient":{
+		    "id":recipient_id
+		  },
+		  "message":{
+		    "attachment":{
+		      "type":"template",
+		      "payload":{
+		        "template_type":"button",
+		        "text":text,
+		        "buttons": buttons
+		      }
+		    }
+		  }
+		})
+
+	postData(data)
+
+# Sender Actions
+def doSenderActions(recipient_id):
+	data = json.dumps({
+	  "recipient":{
+	  	"id":recipient_id
+	  },
+	  "sender_action":"typing_on"
+	})
+	postData(data)
+
+# Text Message
+def doTextMessage(recipient_id, message_text):
+    #log("doTextMessage to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
     data = json.dumps({
         "recipient": {
             "id": recipient_id
@@ -75,13 +132,10 @@ def send_message(recipient_id, message_text):
             "text": message_text
         }
     })
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
+    postData(data)
 
-
-def log(message):  # simple wrapper for logging to stdout on heroku
+ # simple wrapper for logging to stdout on heroku
+def log(message): 
     print str(message)
     sys.stdout.flush()
 
