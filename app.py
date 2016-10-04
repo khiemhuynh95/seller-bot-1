@@ -47,10 +47,10 @@ def webhook():
 					pass
 
 				if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    sender_id = messaging_event["sender"]["id"]		# the facebook ID of the person sending you the message
+					sender_id = messaging_event["sender"]["id"]		# the facebook ID of the person sending you the message
 					recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
 					payload = messaging_event["postback"]["payload"]  # the payload text
-                    onPostbackEvent(sender_id, recipient_id, payload)
+					onPostbackEvent(sender_id, recipient_id, payload)
 
 	return "ok", 200
 
@@ -68,53 +68,53 @@ def postData(data):
 		log(r.text)
 
 def onPostbackEvent(sender_id, recipient_id, payload):
-    if payload == "T_SHIRT":
-        showTShirtProducts(sender_id)
+	if payload == "T_SHIRT":
+		showTShirtProducts(sender_id)
 
 def showTShirtProducts(recipient_id):
-    # products = [
-    #     {
-    #         title: 
-    #     }
-    # ]
+	# products = [
+	#	 {
+	#		 title: 
+	#	 }
+	# ]
 
-    elements = [
-                {
-                    "title":"Welcome to Peter\'s Hats",
-                    "item_url":"https://petersfancybrownhats.com",
-                    "image_url":"https://petersfancybrownhats.com/company_image.png",
-                    "subtitle":"We\'ve got the right hat for everyone.",
-                    "buttons": [
-                        {
-                            "type":"payment",
-                            "title":"buy",
-                            "payload":"DEVELOPER_DEFINED_PAYLOAD",
-                            "payment_summary":{
-                            "currency":"USD",
-                            "payment_type":"FIXED_AMOUNT",
-                            "merchant_name":"Peter's Apparel",
-                            "requested_user_info":[
-                                "shipping_address",
-                                "contact_name",
-                                "contact_phone",
-                                "contact_email"
-                            ],
-                            "price_list":[
-                                {
-                                "label":"Subtotal",
-                                "amount":"29.99"
-                                },
-                                {
-                                "label":"Taxes",
-                                "amount":"2.47"
-                                }
-                            ]
-                            }
-                        }
-                    ]
-                }
-                ]
-    doGenericTemplate(recipient_id, elements)
+	elements = [
+				{
+					"title":"Welcome to Peter\'s Hats",
+					"item_url":"https://petersfancybrownhats.com",
+					"image_url":"https://petersfancybrownhats.com/company_image.png",
+					"subtitle":"We\'ve got the right hat for everyone.",
+					"buttons": [
+						{
+							"type":"payment",
+							"title":"buy",
+							"payload":"DEVELOPER_DEFINED_PAYLOAD",
+							"payment_summary":{
+							"currency":"USD",
+							"payment_type":"FIXED_AMOUNT",
+							"merchant_name":"Peter's Apparel",
+							"requested_user_info":[
+								"shipping_address",
+								"contact_name",
+								"contact_phone",
+								"contact_email"
+							],
+							"price_list":[
+								{
+								"label":"Subtotal",
+								"amount":"29.99"
+								},
+								{
+								"label":"Taxes",
+								"amount":"2.47"
+								}
+							]
+							}
+						}
+					]
+				}
+				]
+	doGenericTemplate(recipient_id, elements)
 
 def onMessageEvent(sender_id, recipient_id, message_text):
 	doSenderActions(sender_id)
@@ -144,22 +144,22 @@ def greeting(sender_id):
 
 # Generic Template
 def doGenericTemplate(recipient_id, elements):
-    data = {
-        "recipient":{
-            "id":recipient_id
-        },
-        "message":{
-            "attachment":{
-            "type":"template",
-            "payload":{
-                "template_type":"generic",
-                "elements":elements
-            }
-            }
-        }
-        }
-    
-    postData(data)
+	data = {
+		"recipient":{
+			"id":recipient_id
+		},
+		"message":{
+			"attachment":{
+			"type":"template",
+			"payload":{
+				"template_type":"generic",
+				"elements":elements
+			}
+			}
+		}
+		}
+	
+	postData(data)
 
 
 # Button Template
