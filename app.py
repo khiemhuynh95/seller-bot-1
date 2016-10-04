@@ -159,6 +159,9 @@ def doGenericTemplate(recipient_id, elements):
 		}
 		}
 	
+    log("doGenericTemplate--------------")
+    log(data)
+
 	postData(data)
 
 
