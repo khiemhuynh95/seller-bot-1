@@ -54,10 +54,10 @@ def webhook():
 
     return "ok", 200
 
-def onMessageEvent(sender_id, recipient_id, message_text) {
+def onMessageEvent(sender_id, recipient_id, message_text):
 	#if message_text == 
 	send_message(sender_id, "got it, thanks!")
-}
+	
 
 def send_message(recipient_id, message_text):
 
