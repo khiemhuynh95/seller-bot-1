@@ -72,48 +72,22 @@ def onPostbackEvent(sender_id, recipient_id, payload):
 		showTShirtProducts(sender_id)
 
 def showTShirtProducts(recipient_id):
-	# products = [
-	#	 {
-	#		 title: 
-	#	 }
-	# ]
-
-	elements = [
-				{
-					"title":"Welcome to Peter\'s Hats",
-					"item_url":"https://petersfancybrownhats.com",
-					"image_url":"https://petersfancybrownhats.com/company_image.png",
-					"subtitle":"We\'ve got the right hat for everyone.",
-					"buttons": [
-						{
-							"type":"payment",
-							"title":"buy",
-							"payload":"DEVELOPER_DEFINED_PAYLOAD",
-							"payment_summary":{
-							"currency":"USD",
-							"payment_type":"FIXED_AMOUNT",
-							"merchant_name":"Peter's Apparel",
-							"requested_user_info":[
-								"shipping_address",
-								"contact_name",
-								"contact_phone",
-								"contact_email"
-							],
-							"price_list":[
-								{
-								"label":"Subtotal",
-								"amount":"29.99"
-								},
-								{
-								"label":"Taxes",
-								"amount":"2.47"
-								}
-							]
-							}
-						}
-					]
-				}
-				]
+	elements = [{
+					"title": "Welcome to Peter\'s Hats",
+					"item_url": "https://petersfancybrownhats.com",
+					"image_url": "https://petersfancybrownhats.com/company_image.png",
+					"subtitle": "We\'ve got the right hat for everyone.",
+					"buttons": [{
+						"type": "web_url",
+						"url": "https://petersfancybrownhats.com",
+						"title": "View Website"
+					}, {
+						"type": "postback",
+						"title": "Start Chatting",
+						"payload": "DEVELOPER_DEFINED_PAYLOAD"
+					}]
+				}]
+				
 	doGenericTemplate(recipient_id, elements)
 
 def onMessageEvent(sender_id, recipient_id, message_text):
