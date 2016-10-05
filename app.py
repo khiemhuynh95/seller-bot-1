@@ -129,18 +129,18 @@ def showLocation(recipient_id):
 	latitude = 10.762952
 	longitude = 106.682340
 	
-	elements = [{
-                    'title': "Nova Shop",
-                    'subtitle': "Nguyen Van Cu, D5, HCM city",
-                    'image_url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
-                    #'image_url' : 'http://staticmap.openstreetmap.de/staticmap.php?center=10.762952,106.682340&zoom=15&size=640x480&markers=10.762952,106.682340,ol-marker',
-                    'buttons': [{
-                        'type': 'web_url',
-                        #'url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
-                        'url': 'http://maps.google.com/maps?q=loc:' + latitude + ',' + longitude + '&z=20',
-                        'title': "Show directions"
-                    }
-                ]}]
+	elements = [{	
+					"title": "Raglan T-Shirt red & white- $12.99",
+					"item_url": "http://www.lazada.vn/ao-thun-nam-tay-raglan-do-do-phoi-trang-2056856.html?mp=1",
+					"image_url": "http://vn-live-01.slatic.net/p/ao-thun-nam-tay-raglan-do-do-phoi-trang-2581-6586502-2d977472b068b70467eeb4e9d2e1122d-catalog_233.jpg",
+					"buttons":[
+			             {
+				            "type":"web_url",
+				            "url":"http://www.lazada.vn/ao-thun-nam-tay-raglan-do-do-phoi-trang-2056856.html?mp=1",
+				            "title":"Show now"
+			             }
+			        ]
+				}]
 	doGenericTemplate(recipient_id,elements)
 
 def showVideo(recipient_id):
