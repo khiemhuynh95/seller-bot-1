@@ -77,6 +77,8 @@ def onPostbackEvent(sender_id, recipient_id, payload):
 		doMoreFeature(sender_id)
 	if payload == "LOCATION":
 		showLocation(sender_id)
+	if payload == "VIDEO":
+		showVideo(sender_id)
 
 def showTShirtProducts(recipient_id):
 	elements = [{
@@ -124,12 +126,12 @@ def showTShirtProducts(recipient_id):
 	doGenericTemplate(recipient_id, elements)
 
 def showLocation(recipient_id):
-	latitude = 40.714728
-	longitude = -73.998672
+	latitude = 10.762952
+	longitude = 106.682340
 	
 	elements = [{
                     'title': "Nova Shop",
-                    'subtitle': "Nguyen Van Cu, D5",
+                    'subtitle': "Nguyen Van Cu, D5, HCM city",
                     'image_url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
                     #'image_url' : 'http://staticmap.openstreetmap.de/staticmap.php?center=10.762952,106.682340&zoom=15&size=640x480&markers=10.762952,106.682340,ol-marker',
                     'buttons': [{
@@ -140,6 +142,22 @@ def showLocation(recipient_id):
                     }
                 ]}]
 	doGenericTemplate(recipient_id,elements)
+
+def showVideo(recipient_id):
+	data = json.dumps({
+		  "recipient":{
+		    "id":recipient_id
+		  },
+		  "message":{
+		    "attachment":{
+		      "type":"video",
+		      "payload":{
+		        "url":"https://video-ams3-1.xx.fbcdn.net/v/t42.1790-2/14598671_198279837271500_3673022822852067328_n.mp4?efg=eyJybHIiOjQxOSwicmxhIjo4MjAsInZlbmNvZGVfdGFnIjoidjNfNDI2X2NyZl8yM19tYWluXzMuMF9zZCJ9&rl=419&vabr=233&oh=3ca3715476e9c768264061d2cdbdbe43&oe=57F4E8BA"
+		      }
+		    }
+		  }
+		}
+	postData(data)
 
 #Show more feature: videos and location
 def doMoreFeature(recipient_id):
@@ -156,7 +174,7 @@ def doMoreFeature(recipient_id):
 	        "buttons":[
 	          {
 	            "type":"postback",
-	            "title":"New product",
+	            "title":"Products on Video",
 	            "payload": "VIDEOS"
 	          },
 	          {
@@ -194,7 +212,7 @@ def greeting(sender_id):
 					"title":"Wallet",
 					"payload":"WALLET"
 				  }
-				]
+			]
 	doButtonTemplate(sender_id, text, buttons)
 
 # Generic Template
