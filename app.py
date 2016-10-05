@@ -75,7 +75,7 @@ def onPostbackEvent(sender_id, recipient_id, payload):
 		showTShirtProducts(sender_id)
 	if payload == "FEATURE":
 		doMoreFeature(sender_id)
-	if payload = "LOCATION":
+	if payload == "LOCATION":
 		showLocation(sender_id)
 
 def showTShirtProducts(recipient_id):
@@ -138,7 +138,7 @@ def showLocation(recipient_id):
                         'type': 'web_url',
                         #'url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
                         'url': 'http://maps.google.com/maps?q=loc:' + latitude + ',' + longitude + '&z=20',
-                        'title': u'Hướng dẫn đường'
+                        'title': "Show directions"
                     }
                 ]})
 	doGenericTemplate(recipient_id,elements)
