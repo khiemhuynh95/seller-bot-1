@@ -75,6 +75,8 @@ def onPostbackEvent(sender_id, recipient_id, payload):
 		showTShirtProducts(sender_id)
 	if payload == "FEATURE":
 		doMoreFeature(sender_id)
+	if payload = "LOCATION":
+		showLocation(sender_id)
 
 def showTShirtProducts(recipient_id):
 	elements = [{
@@ -120,6 +122,26 @@ def showTShirtProducts(recipient_id):
 				}]
 				
 	doGenericTemplate(recipient_id, elements)
+def showLocation(recipient_id,elements):
+	elements = []
+    for msg in message:
+        latitude = msg['latitude']
+        longitude = msg['longitude']
+        title = msg['title']
+        subtitle = msg['subtitle']
+        r.append({
+                    'title': title,
+                    'subtitle':subtitle,
+                    'image_url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
+                    #'image_url' : 'http://staticmap.openstreetmap.de/staticmap.php?center=10.762952,106.682340&zoom=15&size=640x480&markers=10.762952,106.682340,ol-marker',
+                    'buttons': [{
+                        'type': 'web_url',
+                        #'url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
+                        'url': 'http://maps.google.com/maps?q=loc:' + latitude + ',' + longitude + '&z=20',
+                        'title': u'Hướng dẫn đường'
+                    }
+                ]})
+	doGenericTemplate(recipient_id,elements)
 
 #Show more feature: videos and location
 def doMoreFeature(recipient_id):
@@ -136,7 +158,7 @@ def doMoreFeature(recipient_id):
 	        "buttons":[
 	          {
 	            "type":"postback",
-	            "title":"Videos for new product",
+	            "title":"New product",
 	            "payload": "VIDEOS"
 	          },
 	          {
