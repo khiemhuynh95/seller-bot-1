@@ -76,7 +76,7 @@ def onPostbackEvent(sender_id, recipient_id, payload):
 
 def showTShirtProducts(recipient_id):
 	elements = [{
-					"title": "Nice Blue T-Shirt - $19.99 + shipping & tax",
+					"title": "Nice Blue T-Shirt - $19.99",
 					"item_url": "http://www.lazada.vn/ao-thun-nam-co-tru-xanh-navi-2035572.html",
 					"image_url": "http://vn-live-02.slatic.net/p/ao-thun-nam-co-tru-xanh-co-vit-1405-3755302-0a0daa09d238345d6a267ba403f7abbe-catalog_233.jpg",
 					"buttons":[
@@ -88,13 +88,25 @@ def showTShirtProducts(recipient_id):
 			        ]
 				},
 				{	
-					"title": "Light Green T-Shirt - $21.99 + shipping & tax",
+					"title": "Light Green T-Shirt - $21.99",
 					"item_url": "http://zanado.com/ao-thun-nam-jackies-b202-dep-gia-re-sid48907.html?color=98",
-					"image_url": "http://a4vn.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/4/_/4_104_192.jpg",
+					"image_url": "http://a4vn.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/1/3/13_40_2.jpg",
 					"buttons":[
 			             {
 				            "type":"web_url",
 				            "url":"http://zanado.com/ao-thun-nam-jackies-b202-dep-gia-re-sid48907.html?color=98",
+				            "title":"Buy"
+			             }
+			        ]
+				},
+				{	
+					"title": "Raglan T-Shirt red & white- $12.99",
+					"item_url": "http://www.lazada.vn/ao-thun-nam-tay-raglan-do-do-phoi-trang-2056856.html?mp=1",
+					"image_url": "http://vn-live-01.slatic.net/p/ao-thun-nam-tay-raglan-do-do-phoi-trang-2581-6586502-2d977472b068b70467eeb4e9d2e1122d-catalog_233.jpg",
+					"buttons":[
+			             {
+				            "type":"web_url",
+				            "url":"http://www.lazada.vn/ao-thun-nam-tay-raglan-do-do-phoi-trang-2056856.html?mp=1",
 				            "title":"Buy"
 			             }
 			        ]
