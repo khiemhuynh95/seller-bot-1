@@ -79,15 +79,25 @@ def showTShirtProducts(recipient_id):
 					"title": "Nice Blue T-Shirt - $19.99 + shipping & tax",
 					"item_url": "http://www.lazada.vn/ao-thun-nam-co-tru-xanh-navi-2035572.html",
 					"image_url": "http://vn-live-02.slatic.net/p/ao-thun-nam-co-tru-xanh-co-vit-1405-3755302-0a0daa09d238345d6a267ba403f7abbe-catalog_233.jpg",
-					#"subtitle": "Soft red cotton T-Shirt for everyone.",
 					"buttons":[
 			             {
 				            "type":"web_url",
 				            "url":"http://www.lazada.vn/ao-thun-nam-co-tru-xanh-navi-2035572.html",
 				            "title":"Buy"
 			             }
-
-		            ]
+			        ]
+				},
+				{	
+					"title": "Light Green T-Shirt - $21.99 + shipping & tax",
+					"item_url": "http://zanado.com/ao-thun-nam-jackies-b202-dep-gia-re-sid48907.html?color=98",
+					"image_url": "http://a4vn.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/4/_/4_104_192.jpg",
+					"buttons":[
+			             {
+				            "type":"web_url",
+				            "url":"http://zanado.com/ao-thun-nam-jackies-b202-dep-gia-re-sid48907.html?color=98",
+				            "title":"Buy"
+			             }
+			        ]
 				}]
 				
 	doGenericTemplate(recipient_id, elements)
