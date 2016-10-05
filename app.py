@@ -132,7 +132,7 @@ def showLocation(recipient_id):
 	elements = [	
 					{
                     'title': "Nova Shop",
-                    'subtitle': "Nguyen Van Cu, D5, HCM city",
+                    'subtitle': "227 Nguyen Van Cu, D5, HCM city",
                     #'image_url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
                     'image_url' : 'http://staticmap.openstreetmap.de/staticmap.php?center=10.762952,106.682340&zoom=15&size=640x480&markers=10.762952,106.682340,ol-marker',
                     'buttons': [{
