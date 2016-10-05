@@ -175,7 +175,7 @@ def doMoreFeature(recipient_id):
 	          {
 	            "type":"postback",
 	            "title":"Products on Video",
-	            "payload": "VIDEOS"
+	            "payload": "VIDEO"
 	          },
 	          {
 	            "type":"postback",
