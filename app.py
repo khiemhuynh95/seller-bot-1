@@ -121,9 +121,10 @@ def showTShirtProducts(recipient_id):
 				
 	doGenericTemplate(recipient_id, elements)
 
+#Show more feature: videos and location
 def doMoreFeature(recipient_id):
-		data = json.dumps({
-	  "recipient":{
+	data = json.dumps({
+	"recipient":{
 	    "id":recipient_id
 	  },
 	  "message":{
@@ -149,6 +150,7 @@ def doMoreFeature(recipient_id):
 	  }
 	})
 	postData(data)
+
 def onMessageEvent(sender_id, recipient_id, message_text):
 	doSenderActions(sender_id)
 	if message_text == "hello":
