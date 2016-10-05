@@ -73,6 +73,8 @@ def postData(data):
 def onPostbackEvent(sender_id, recipient_id, payload):
 	if payload == "T_SHIRT":
 		showTShirtProducts(sender_id)
+	if payload == "FEATURE":
+		doMoreFeature(sender_id)
 
 def showTShirtProducts(recipient_id):
 	elements = [{
@@ -84,6 +86,11 @@ def showTShirtProducts(recipient_id):
 				            "type":"web_url",
 				            "url":"http://www.lazada.vn/ao-thun-nam-co-tru-xanh-navi-2035572.html",
 				            "title":"Buy"
+			             },
+			             {
+			             	"type": "postback",
+			             	"title":"More feature",
+			             	"payload" : "FEATURE"
 			             }
 			        ]
 				},
@@ -114,6 +121,34 @@ def showTShirtProducts(recipient_id):
 				
 	doGenericTemplate(recipient_id, elements)
 
+def doMoreFeature(recipient_id):
+		data = json.dumps({
+	  "recipient":{
+	    "id":"USER_ID"
+	  },
+	  "message":{
+	    "attachment":{
+	      "type":"template",
+	      "payload":{
+	        "template_type":"button",
+	        "text":"What do you want to do next?",
+	        "buttons":[
+	          {
+	            "type":"postback",
+	            "title":"Videos for new product",
+	            "payload": "VIDEOS"
+	          },
+	          {
+	            "type":"postback",
+	            "title":"Our shop location",
+	            "payload":"LOCATION"
+	          }
+	        ]
+	      }
+	    }
+	  }
+	})
+	postData(data)
 def onMessageEvent(sender_id, recipient_id, message_text):
 	doSenderActions(sender_id)
 	if message_text == "hello":
