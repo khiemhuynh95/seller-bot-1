@@ -124,7 +124,7 @@ def showTShirtProducts(recipient_id):
 def doMoreFeature(recipient_id):
 		data = json.dumps({
 	  "recipient":{
-	    "id":"USER_ID"
+	    "id":recipient_id
 	  },
 	  "message":{
 	    "attachment":{
