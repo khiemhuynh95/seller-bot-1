@@ -122,12 +122,12 @@ def showTShirtProducts(recipient_id):
 				}]
 				
 	doGenericTemplate(recipient_id, elements)
+
 def showLocation(recipient_id):
 	latitude = 70
 	longitude = 100
 	elements = []
-  
-    elements.append({
+	elements.append({
                     'title': "Nova Shop",
                     'subtitle': "Nguyen Van Cu, D5",
                     'image_url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
