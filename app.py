@@ -138,7 +138,7 @@ def showLocation(recipient_id):
                     'buttons': [{
                         'type': 'web_url',
                         #'url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
-                        'url': 'http://maps.google.com/maps'#?q=loc:' + latitude + ',' + longitude + '&z=20',
+                        'url': 'http://maps.google.com/maps',#?q=loc:' + latitude + ',' + longitude + '&z=20',
                         'title': "Show directions"
                     	}
                 	]
