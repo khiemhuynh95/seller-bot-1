@@ -79,7 +79,7 @@ def showTShirtProducts(recipient_id):
 					"title": "Nice Blue T-Shirt - $19.99 + shipping & tax",
 					"item_url": "http://www.lazada.vn/ao-thun-nam-co-tru-xanh-navi-2035572.html",
 					"image_url": "http://vn-live-02.slatic.net/p/ao-thun-nam-co-tru-xanh-co-vit-1405-3755302-0a0daa09d238345d6a267ba403f7abbe-catalog_233.jpg",
-					"subtitle": "Soft red cotton T-Shirt for everyone.",
+					#"subtitle": "Soft red cotton T-Shirt for everyone.",
 					"buttons":[
 			             {
 				            "type":"web_url",
