@@ -76,15 +76,15 @@ def onPostbackEvent(sender_id, recipient_id, payload):
 
 def showTShirtProducts(recipient_id):
 	elements = [{
-					"title": "Nice Red T-Shirt - $19.99 + shipping & tax",
-					"item_url": "http://khohangsi.net/ao-thun-nam-co-tru-1-1-70134602.html",
-					"image_url": "http://cdn-img-v1.webbnc.net/upload/web/51/510097/product/2015/04/15/10/37/142906902236.jpg",
+					"title": "Nice Blue T-Shirt - $19.99 + shipping & tax",
+					"item_url": "http://www.lazada.vn/ao-thun-nam-co-tru-xanh-navi-2035572.html",
+					"image_url": "http://vn-live-02.slatic.net/p/ao-thun-nam-co-tru-xanh-co-vit-1405-3755302-0a0daa09d238345d6a267ba403f7abbe-catalog_233.jpg",
 					"subtitle": "Soft red cotton T-Shirt for everyone.",
 					"buttons":[
 			             {
 				            "type":"web_url",
-				            "url":"http://khohangsi.net",
-				            "title":"Show Website"
+				            "url":"http://www.lazada.vn/ao-thun-nam-co-tru-xanh-navi-2035572.html",
+				            "title":"Buy"
 			             }
 
 		            ]
