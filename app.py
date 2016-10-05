@@ -124,8 +124,8 @@ def showTShirtProducts(recipient_id):
 	doGenericTemplate(recipient_id, elements)
 
 def showLocation(recipient_id):
-	latitude = 70
-	longitude = 100
+	latitude = 40.714728
+	longitude = -73.998672
 	elements = []
 	elements.append({
                     'title': "Nova Shop",
@@ -161,7 +161,7 @@ def doMoreFeature(recipient_id):
 	          },
 	          {
 	            "type":"postback",
-	            "title":"Our shop location",
+	            "title":"Shop location",
 	            "payload":"LOCATION"
 	          }
 	        ]
