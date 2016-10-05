@@ -156,7 +156,7 @@ def showVideo(recipient_id):
 		      }
 		    }
 		  }
-		}
+		})
 	postData(data)
 
 #Show more feature: videos and location
