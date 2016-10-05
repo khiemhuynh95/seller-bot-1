@@ -122,14 +122,14 @@ def showTShirtProducts(recipient_id):
 				}]
 				
 	doGenericTemplate(recipient_id, elements)
-def showLocation(recipient_id,elements):
+def showLocation(recipient_id):
 	elements = []
     for msg in message:
         latitude = msg['latitude']
         longitude = msg['longitude']
         title = msg['title']
         subtitle = msg['subtitle']
-        r.append({
+        elements.append({
                     'title': title,
                     'subtitle':subtitle,
                     'image_url': 'http://staticmap.openstreetmap.de/staticmap.php?center=' + latitude + ',' + longitude + '&zoom=18&size=640x480&markers=' + latitude + ',' + longitude + ',ol-marker',
