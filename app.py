@@ -89,7 +89,7 @@ def showTShirtProducts(recipient_id):
 			             {
 				            "type":"web_url",
 				            "url":"http://www.lazada.vn/ao-thun-nam-co-tru-xanh-navi-2035572.html",
-				            "title":"Buy"
+				            "title":"Show now"
 			             },
 			             {
 			             	"type": "postback",
@@ -106,7 +106,7 @@ def showTShirtProducts(recipient_id):
 			             {
 				            "type":"web_url",
 				            "url":"http://zanado.com/ao-thun-nam-jackies-b202-dep-gia-re-sid48907.html?color=98",
-				            "title":"Buy"
+				            "title":"Show now"
 			             }
 			        ]
 				},
@@ -118,7 +118,7 @@ def showTShirtProducts(recipient_id):
 			             {
 				            "type":"web_url",
 				            "url":"http://www.lazada.vn/ao-thun-nam-tay-raglan-do-do-phoi-trang-2056856.html?mp=1",
-				            "title":"Buy"
+				            "title":"Show now"
 			             }
 			        ]
 				}]
@@ -181,6 +181,11 @@ def doMoreFeature(recipient_id):
 	            "type":"postback",
 	            "title":"Shop location",
 	            "payload":"LOCATION"
+	          },
+	          {
+	            "type":"postback",
+	            "title":"Show webiste",
+	            "payload":"WEBSITE"
 	          }
 	        ]
 	      }
