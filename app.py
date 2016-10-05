@@ -76,37 +76,17 @@ def onPostbackEvent(sender_id, recipient_id, payload):
 
 def showTShirtProducts(recipient_id):
 	elements = [{
-					"title": "Welcome to Peter\'s Hats",
-					"item_url": "https://petersfancybrownhats.com",
-					"image_url": "https://petersfancybrownhats.com/company_image.png",
-					"subtitle": "We\'ve got the right hat for everyone.",
+					"title": "Nice Red T-Shirt - $19.99 + shipping & tax",
+					"item_url": "http://khohangsi.net/ao-thun-nam-co-tru-1-1-70134602.html",
+					"image_url": "http://cdn-img-v1.webbnc.net/upload/web/51/510097/product/2015/04/15/10/37/142906902236.jpg",
+					"subtitle": "Soft red cotton T-Shirt for everyone.",
 					"buttons":[
-		              {
-		                "type":"payment",
-		                "title":"buy",
-		                "payload":"DEVELOPER_DEFINED_PAYLOAD",
-		                "payment_summary":{
-		                  "currency":"USD",
-		                  "payment_type":"FIXED_AMOUNT",
-		                  "merchant_name":"Peter's Apparel",
-		                  "requested_user_info":[
-		                    "shipping_address",
-		                    "contact_name",
-		                    "contact_phone",
-		                    "contact_email"
-		                  ],
-		                  "price_list":[
-		                    {
-		                      "label":"Subtotal",
-		                      "amount":"29.99"
-		                    },
-		                    {
-		                      "label":"Taxes",
-		                      "amount":"2.47"
-		                    }
-		                  ]
-		                }
-		              }
+			             {
+				            "type":"web_url",
+				            "url":"http://khohangsi.net",
+				            "title":"Show Website"
+			             }
+
 		            ]
 				}]
 				
