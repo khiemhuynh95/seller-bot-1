@@ -7,18 +7,19 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+VERIFY_TOKEN = "NOVA"
+PAGE_ACCESS_TOKEN = "EAAEc5hWDvxQBAESxoHBZAYCMRGIrUOxAOXUhd3Cc9F38WD55xNvqV8x6S4zkaRydPkvwXGKZA99dRZClR88CBVr78nHZAvnkGoePM3fWphZC7Xu9EftGOV87c42ZBp6T2IOZAJ3OL1owqDiHcKAi799WzvjDeCVDk86QdYKOBNJ2QZDZD"
 
 @app.route('/', methods=['GET'])
 def verify():
 	# when the endpoint is registered as a webhook, it must echo back
 	# the 'hub.challenge' value it receives in the query arguments
 	if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-		if not request.args.get("hub.verify_token") == os.environ["VERIFY_TOKEN"]:
+		if not request.args.get("hub.verify_token") == VERIFY_TOKEN:
 			return "Verification token mismatch", 403
 		return request.args["hub.challenge"], 200
 
 	return "Hello world", 200
-
 
 @app.route('/', methods=['POST'])
 def webhook():
@@ -59,7 +60,7 @@ def webhook():
 
 def postData(data):
 	params = {
-		"access_token": os.environ["PAGE_ACCESS_TOKEN"]
+		"access_token": PAGE_ACCESS_TOKEN
 	}
 	headers = {
 		"Content-Type": "application/json"
@@ -93,7 +94,7 @@ def showTShirtProducts(recipient_id):
 			             },
 			             {
 			             	"type": "postback",
-			             	"title":"More feature",
+			             	"title":"More features",
 			             	"payload" : "FEATURE"
 			             }
 			        ]
