@@ -42,7 +42,7 @@ def webhook():
 
 
 						message_attachments = messaging_event["message"]["attachments"]["payload"]["url"]
-						if (message_attachments != None):
+						#if (message_attachments != None):
 							log("IMAGE URL: " + message_attachments)
 
 						onMessageEvent(sender_id, recipient_id, message_text)
