@@ -38,11 +38,11 @@ def webhook():
 					try:  # someone sent us a message
 						sender_id = messaging_event["sender"]["id"]		# the facebook ID of the person sending you the message
 						recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-						#message_text = messaging_event["message"]["text"]  # the message's text
+						message_text = messaging_event["message"]["text"]  # the message's text
 
 
 						message_attachments = messaging_event["message"]["attachments"]["payload"]["url"]
-						if (message_attachments != null):
+						if (message_attachments != None):
 							log("IMAGE URL: " + message_attachments)
 
 						onMessageEvent(sender_id, recipient_id, message_text)
